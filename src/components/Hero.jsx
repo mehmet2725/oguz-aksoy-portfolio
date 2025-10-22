@@ -4,8 +4,6 @@ import useTypewriter from "../hooks/useTypewriter";
 import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
 import { motion } from "framer-motion";
-// değiştirdim: assets/img içindeki gerçek dosyaya işaret et
-import devImg from "../assets/img/lpo0-listing.jpg";
 
 const particlesInit = async (main) => {
   try {
@@ -14,9 +12,6 @@ const particlesInit = async (main) => {
     console.warn("tsparticles loadFull hatası:", err);
   }
 };
-
-const FALLBACK_SVG =
-  'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="420" height="360"><rect fill="%236c63ff" width="100%" height="100%"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="%23fff" font-family="Arial" font-size="24">Oğuz Aksoy</text></svg>';
 
 const Hero = () => {
   const words = ["Frontend Developer", "UI Engineer", "React Lover"];
@@ -74,29 +69,12 @@ const Hero = () => {
           </p>
 
           <div className="hero-ctas">
-            <a className="btn" href="#">CV İndir</a>
+            <a className="btn" href="#projects">CV İndir</a>
             <a className="btn outline" href="#projects">Projeler</a>
           </div>
         </motion.div>
 
-        <motion.div
-          className="hero-right"
-          initial={{ opacity: 0, scale: 0.97 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8 }}
-        >
-          <div className="device-mock">
-            <img
-              src={devImg}
-              alt="Developer illustration"
-              onError={(e) => {
-                e.currentTarget.onerror = null;
-                e.currentTarget.src = FALLBACK_SVG;
-              }}
-            />
-            <div className="glass-overlay" />
-          </div>
-        </motion.div>
+        {/* Sağ taraftaki görsel kaldırıldı intentionally to reduce network load and visual clutter */}
       </div>
     </section>
   );
